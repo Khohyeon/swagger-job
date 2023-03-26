@@ -24,6 +24,7 @@ import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostAndSkillUpdateRespDt
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostDetailDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostReqDto.SaveRecruitmentPostReqDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostReqDto.UpdateRecruitmentPostReqDto;
+import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto.RecruitmentPostCategoryRespDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto.RecruitmentPostDetailRespDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto.RecruitmentPostListRespDto;
@@ -272,13 +273,13 @@ public class RecruitmentController {
 
     @PostMapping("/ns/recruitment/search")
     @Operation(summary = "6. 채용공고 검색하기", description = "채용공고의 정보를 검색합니다.")
-    public ResponseEntity<?> searchList(@RequestBody RecruitmentPostSearchRespDto recruitmentPostSearchRespDto) {
-        List<RecruitmentPostSearchRespDto> postPSList = recruitmentService.채용정보검색(recruitmentPostSearchRespDto);
+    public ResponseEntity<?> searchList(@RequestBody RecruitmentPostRespDto.RecruitmentPostSearchReqDto recruitmentPostSearchReqDto) {
+        List<RecruitmentPostSearchRespDto> postPSList = recruitmentService.채용정보검색(recruitmentPostSearchReqDto);
 
         // d-day 계산
-//        for (RecruitmentPostSearchRespDto post : postPSList) {
-//            post.calculateDiffDays(); // D-Day 계산
-//        }
+        for (RecruitmentPostSearchRespDto post : postPSList) {
+            post.calculateDiffDays(); // D-Day 계산
+        }
 
         return new ResponseEntity<>(new ResponseDto<>(1, "검색 성공", postPSList), HttpStatus.OK);
     }

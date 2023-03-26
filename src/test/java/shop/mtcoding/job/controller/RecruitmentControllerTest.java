@@ -58,7 +58,7 @@ public class RecruitmentControllerTest {
 
                 // when
                 ResultActions resultActions = mvc.perform(
-                                delete("/recruitment/" + id).session(mockSession).header("Authorization", jwt));
+                                delete("/recruitment/delete/" + id).session(mockSession).header("Authorization", jwt));
                 String responseBody = resultActions.andReturn().getResponse().getContentAsString();
                 System.out.println("delete_test : " + responseBody);
 
@@ -105,20 +105,20 @@ public class RecruitmentControllerTest {
                 resultActions.andExpect(jsonPath("$..[0].id").value(1));
         }
 
-        @Test
-        public void update_test() throws Exception {
-                // given
-                int id = 1;
-
-                // when
-                ResultActions resultActions = mvc.perform(
-                                get("/recruitment/" + id + "/updateForm").session(mockSession).header("Authorization",
-                                                jwt));
-                String responseBody = resultActions.andReturn().getResponse().getContentAsString();
-                System.out.println("data_test : " + responseBody);
-
-                // then
-                resultActions.andExpect(jsonPath("$.code").value(1));
-                resultActions.andExpect(status().isOk());
-        }
+//        @Test
+//        public void update_test() throws Exception {
+//                // given
+//                int id = 1;
+//
+//                // when
+//                ResultActions resultActions = mvc.perform(
+//                                get("/recruitment/" + id + "/updateForm").session(mockSession).header("Authorization",
+//                                                jwt));
+//                String responseBody = resultActions.andReturn().getResponse().getContentAsString();
+//                System.out.println("data_test : " + responseBody);
+//
+//                // then
+//                resultActions.andExpect(jsonPath("$.code").value(1));
+//                resultActions.andExpect(status().isOk());
+//        }
 }

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostReqDto.SaveRecruitmentPostReqDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostReqDto.UpdateRecruitmentPostReqDto;
+import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto.RecruitmentPostCategoryRespDto;
 import shop.mtcoding.job.dto.recruitmentPost.RecruitmentPostRespDto.RecruitmentPostSearchRespDto;
 import shop.mtcoding.job.handler.exception.CustomApiException;
@@ -143,8 +144,8 @@ public class RecruitmentService {
     }
 
     @Transactional
-    public List<RecruitmentPostSearchRespDto> 채용정보검색(RecruitmentPostSearchRespDto postRespDto) {
-        List<RecruitmentPostSearchRespDto> postPSList = recruitmentPostRepository.findByTitleOrContent(postRespDto);
+    public List<RecruitmentPostSearchRespDto> 채용정보검색(RecruitmentPostRespDto.RecruitmentPostSearchReqDto recruitmentPostSearchReqDto) {
+        List<RecruitmentPostSearchRespDto> postPSList = recruitmentPostRepository.findByTitleOrContent(recruitmentPostSearchReqDto);
         return postPSList;
     }
 

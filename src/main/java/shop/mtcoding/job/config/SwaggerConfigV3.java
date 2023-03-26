@@ -7,6 +7,7 @@ import io.swagger.v3.oas.models.media.StringSchema;
 import io.swagger.v3.oas.models.parameters.Parameter;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
@@ -29,7 +30,8 @@ public class SwaggerConfigV3 {
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
-                .info(new Info().title("My App").version("1.0.0"))
+                .info(new Info().title("Highre").version("1.0.0"))
+//                .servers(List.of(new Server().url("내서버배포").description("내주소")))
                 // Components section defines Security Scheme "mySecretHeader"
                 .components(new Components()
                         .addSecuritySchemes("Authorization", new SecurityScheme()

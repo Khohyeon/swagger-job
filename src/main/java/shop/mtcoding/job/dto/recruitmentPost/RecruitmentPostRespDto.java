@@ -70,20 +70,26 @@ public class RecruitmentPostRespDto {
     @Getter
     @Setter
     public static class RecruitmentPostSearchRespDto {
-//        private Integer id;
-//        private String title;
-//        private String address;
-//        private String enterpriseName;
-//        private String position;
-//        private String enterpriseLogo;
+        private Integer id;
+        private String title;
+        private String address;
+        private String enterpriseName;
+        private String position;
+        private String enterpriseLogo;
         private String searchString;
-//        private String deadline;
-//        private long diffDays;
-//        private Timestamp createdAt;
-//
-//        public void calculateDiffDays() { // D-Day 계산하는 메서드 추가
-//            diffDays = DateUtil.deadline(deadline);
-//        }
+        private String deadline;
+        private long diffDays;
+        private Timestamp createdAt;
+
+        public void calculateDiffDays() { // D-Day 계산하는 메서드 추가
+            diffDays = DateUtil.deadline(deadline);
+        }
+    }
+
+    @Getter
+    @Setter
+    public static class RecruitmentPostSearchReqDto {
+        private String searchString;
     }
 
     @Getter
